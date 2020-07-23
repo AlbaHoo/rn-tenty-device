@@ -1,0 +1,7 @@
+#!/bin/sh
+cd android && ./gradlew assembleRelease
+# aliyun oss cp /Users/Alba/Develops/helong/mobile_react_native/android/app/build/outputs/apk/release/app-release.apk oss://helon/app.apk
+aws s3 cp /Users/Alba/Develops/helong/mobile_react_native/android/app/build/outputs/apk/release/app-release.apk s3://tenty-misc/helong/app-${1:-'final'}.apk
+echo "deployed to s3://tenty-misc/helong/app-${1:-'final'}.apk"
+echo "http://downloads.tenty.co/helong/app-${1:-'final'}.apk"
+cd ..
